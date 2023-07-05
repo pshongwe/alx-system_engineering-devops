@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -alpv | paste -sd ',' - 
+ls -apv | paste -sd ',' - 
