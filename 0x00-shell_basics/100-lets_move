@@ -1,6 +1,2 @@
 #!/bin/bash
-for file in *; do
-    if [[ $file == [[:upper:]]* ]]; then
-        mv "$file" /tmp/u/
-    fi
-done
+find . -maxdepth 1 -type f -name '[A-Z]*' -exec mv {} /tmp/u/ \;
