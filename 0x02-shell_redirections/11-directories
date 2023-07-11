@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type d | wc -l
+find . -type d -execdir bash -c 'echo "$0"' {} \; | wc -l
