@@ -1,19 +1,15 @@
 #!/usr/bin/env bash
+# Displays information about the file `school`.
 
 file="school"
-
-# Check if the file exists
 if [ -e "$file" ]; then
-  echo "school file exists"
-  
-  # Check if the file is empty
+  echo "school file exists" 
   if [ -s "$file" ]; then
     echo "school file is not empty"
   else
     echo "school file is empty"
   fi
-  
-  # Check if the file is a regular file
+
   if [ -f "$file" ]; then
     echo "school is a regular file"
   fi
