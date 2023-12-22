@@ -6,7 +6,7 @@ hour=0
 # Use a while loop to display hours and minutes
 while [ $hour -lt 12 ]; do
   echo "Hour: $hour"
-  for minute in {1..59}; do
+  while [ $minute -le 59]; do
     echo "$minute"
   done
   ((hour++))
