@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Define the headers for the output
+echo "USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND"
+
+# Use the ps command to list processes in a user-oriented format
+ps -e -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,cmd --forest | awk '{print $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11}'
