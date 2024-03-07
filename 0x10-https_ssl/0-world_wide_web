@@ -8,12 +8,6 @@ domain_information() {
     local record_info
 
     query_result=$(dig "$subdomain.$domain" | grep -A1 'ANSWER SECTION:')
-
-    if [[ -z "$query_result" ]]; then
-        echo "No record found for $subdomain.$domain"
-        return
-    fi
-
     record_info=$(echo "$query_result" | tr '\t' '\n' | tail -2 | tr '\n' ' ')
     echo "$subdomain $record_info" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
 }
