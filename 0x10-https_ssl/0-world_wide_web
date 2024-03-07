@@ -1,0 +1,36 @@
+#!/bin/bash
+# domain info
+
+domain_information() {
+    local domain=$1
+    local subdomain=$2
+    local query_result
+    local record_info
+
+    query_result=$(dig "$subdomain.$domain" | grep -A1 'ANSWER SECTION:')
+
+    if [[ -z "$query_result" ]]; then
+        echo "No record found for $subdomain.$domain"
+        return
+    fi
+
+    record_info=$(echo "$query_result" | tr '\t' '\n' | tail -2 | tr '\n' ' ')
+    echo "$subdomain $record_info" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
+}
+
+if ! command -v dig &> /dev/null; then
+    echo "The 'dig' command is not available. Please install it to use this script."
+    exit 1
+fi
+
+if [ "$#" -eq 1 ]; then
+    domain_information "$1" "www"
+    domain_information "$1" "lb-01"
+    domain_information "$1" "web-01"
+    domain_information "$1" "web-02"
+elif [ "$#" -eq 2 ]; then
+    domain_information "$1" "$2"
+else
+    echo "Usage: $0 domain [subdomain]"
+    exit 1
+fi
