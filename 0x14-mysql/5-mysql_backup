@@ -5,9 +5,9 @@ USER="root"
 PASSWORD="$1"
 # File names
 DUMP_FILE="backup.sql"
-ARCHIVE_FILE="$(date +%d-%m-%Y).tar.gz"
+ARCHIVE_FILE="$(date '+%d-%m-%Y').tar.gz"
 # Dump all MySQL databases
-mysqldump --user=${USER} --password=${PASSWORD} --all-databases > ${DUMP_FILE}
+mysqldump -u ${USER} -p ${PASSWORD} --all-databases > ${DUMP_FILE}
 # Compress the dump file
 tar -czvf ${ARCHIVE_FILE} ${DUMP_FILE}
 # Remove the original dump file
