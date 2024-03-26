@@ -20,9 +20,11 @@ def get_todo_list_progress(employee_id):
         return
 
     completed_tasks = [todo for todo in todos if todo.get("completed")]
-    print(f"Employee {user.get('name')} is done with tasks({len(completed_tasks)}/{len(todos)}):")
+    print(f"Employee {user.get('name')} is done with
+          tasks({len(completed_tasks)}/{len(todos)}): ")
     for task in completed_tasks:
         print(f"\t {task.get('title')}")
+
 
 if __name__ == '__main__':
     get_todo_list_progress(int(sys.argv[1]))
