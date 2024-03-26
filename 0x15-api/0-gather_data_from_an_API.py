@@ -36,7 +36,4 @@ def get_todo_list_progress(employee_id):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) == 2 and sys.argv[1].isdigit():
-        get_todo_list_progress(int(sys.argv[1]))
-    else:
-        print("Usage: ./0-gather_data_from_an_API.py <employee_id>")
+    get_todo_list_progress(int(sys.argv[1]))
