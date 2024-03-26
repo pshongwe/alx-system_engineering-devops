@@ -4,6 +4,7 @@ import json
 import requests
 import sys
 
+
 def export_to_json(employee_id):
     """Exports the TODO list data of an employee to a JSON file."""
     base_url = 'https://jsonplaceholder.typicode.com'
@@ -17,9 +18,10 @@ def export_to_json(employee_id):
         print(f"Error fetching data: {e}")
         return
 
-    username = user.get('username')
+    un = user.get('username')
     tasks = [
-        {"task": todo.get('title'), "completed": todo.get('completed'), "username": username}
+        {"task": todo.get('title'),
+         "completed": todo.get('completed'), "username": un}
         for todo in todos
     ]
 
@@ -28,6 +30,7 @@ def export_to_json(employee_id):
 
     with open(file_name, 'w') as jsonfile:
         json.dump(data, jsonfile)
+
 
 if __name__ == '__main__':
     export_to_json(sys.argv[1])
