@@ -4,10 +4,8 @@ progress of a given employee."""
 import requests
 import sys
 
-
-def get_todo_list_progress(employee_id):
-    """Fetches and displays the TODO list progress
-    of an employee with the given ID."""
+if __name__ == '__main__':
+    employee_id = sys.argv[1]
     base_url = "https://jsonplaceholder.typicode.com"
     user_url = f"{base_url}/users/{employee_id}"
     todos_url = f"{base_url}/todos"
@@ -20,11 +18,9 @@ def get_todo_list_progress(employee_id):
         return
 
     completed_tasks = [todo for todo in todos if todo.get("completed")]
-    print(f"Employee {user.get('name')} is done with
-          tasks({len(completed_tasks)}/{len(todos)}): ")
+    a = user.get('name')
+    b = len(completed_tasks)
+    c = len(todos)
+    print(f"Employee {a} is done with tasks({b}/{c}): ")
     for task in completed_tasks:
         print(f"\t {task.get('title')}")
-
-
-if __name__ == '__main__':
-    get_todo_list_progress(int(sys.argv[1]))
