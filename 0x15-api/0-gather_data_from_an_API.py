@@ -28,7 +28,7 @@ def get_todo_list_progress(employee_id):
 
     # Display progress
     en = employee_name
-    ag = completed_tasks/total_tasks
+    ag = f'{completed_tasks}/{total_tasks}'
     print(f'Employee {en} is done with tasks({ag}):')
     for todo in todos_data:
         if todo['completed']:
