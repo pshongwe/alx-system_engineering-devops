@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# make it shorter
+sudo sed -i "s/80/8080/; s/#user www-data/user nginx/" /etc/nginx/{sites-available/default,nginx.conf}
+sudo chown nginx:nginx /etc/nginx/nginx.conf
+sudo chmod 644 /etc/nginx/nginx.conf
+sudo pkill -f apache2
+sudo -u nginx nginx -s reload
